@@ -10,7 +10,7 @@ namespace Vectorz
 {
     class Program
     {
-        static int scale = 75;
+        static int scale = 25;
         static void Main(string[] args)
         {
             Console.SetBufferSize(1080,1920);
@@ -55,18 +55,17 @@ namespace Vectorz
                 var a = new Exception();
                 Parallel.For (0,trans.Length-1, i=>
                 {
-                    Draw(trans[i],trans[i+1],a);
+                    Draw(trans[i],trans[i+1],a,i);
                 });
                 Console.BackgroundColor = ConsoleColor.Black;
-                Thread.Sleep(100);
+                Thread.Sleep(250);
                 Console.Clear();
-                angle = angle + new Vector3(0.25,0.25,0.25);
-                
+                angle = angle + new Vector3(0.15,0.15,0.15);
             }
             #endregion
         }
         #region helperfunctions
-        public static void Draw(Vector2 v1, Vector2 v2, object dummy)
+        public static void Draw(Vector2 v1, Vector2 v2, object dummy, int color)
         {
             int dist = Convert.ToInt32(v1.Distance(v2));
             for (int i = 0;i<dist;i++)
@@ -81,6 +80,7 @@ namespace Vectorz
                     lock (dummy)
                     {
                         Console.SetCursorPosition(x, y);
+                        Console.BackgroundColor = (ConsoleColor)(color%15+1);
                         Console.Write("  ");
                     }
                 }
