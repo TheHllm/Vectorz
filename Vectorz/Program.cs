@@ -10,7 +10,7 @@ namespace Vectorz
 {
     class Program
     {
-        static int scale = 25;
+        static int scale = 50;
         static void Main(string[] args)
         {
             Console.SetBufferSize(1080,1920);
@@ -60,7 +60,7 @@ namespace Vectorz
                 Console.BackgroundColor = ConsoleColor.Black;
                 Thread.Sleep(250);
                 Console.Clear();
-                angle = angle + new Vector3(0.15,0.15,0.15);
+                angle = angle + new Vector3(0.20,0.20,0.20);
             }
             #endregion
         }
@@ -79,7 +79,7 @@ namespace Vectorz
                 {
                     lock (dummy)
                     {
-                        Console.SetCursorPosition(x, y);
+                        Console.SetCursorPosition(x*2, y);
                         Console.BackgroundColor = (ConsoleColor)(color%15+1);
                         Console.Write("  ");
                     }
